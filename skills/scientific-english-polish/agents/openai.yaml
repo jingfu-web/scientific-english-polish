@@ -1,0 +1,4 @@
+interface:
+  display_name: "英文科技写作润色"
+  short_description: "润色英文科技论文，改善语言与逻辑，保留技术含义并提供中文修改说明"
+  default_prompt: "请使用 $scientific-english-polish 润色以下英文科技论文内容，保留技术含义、公式和引用，并用中文说明关键修改。"

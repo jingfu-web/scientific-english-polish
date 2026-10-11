@@ -1,0 +1,34 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { mkdtempSync, readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { spawnSync } from 'node:child_process';
+const cli = fileURLToPath(new URL('../bin/cli.js', import.meta.url));
+const run = (...args) => spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8' });
+test('install, repeated install, refusal, and backup update', () => {
+  const root = mkdtempSync(path.join(tmpdir(), 'english-skill-'));
+  const parent = path.join(root, 'skills');
+  const installed = path.join(parent, 'scientific-english-polish');
+  assert.equal(run('install', '--dir', parent).status, 0);
+  const text = readFileSync(path.join(installed, 'SKILL.md'), 'utf8');
+  assert.match(text, /name: scientific-english-polish/);
+  assert.equal(readdirSync(path.join(installed, 'references')).length, 6);
+  assert.match(run('install', '--dir', parent).stdout, /Already installed/);
+  writeFileSync(path.join(installed, 'custom.txt'), 'Keep my edits');
+  assert.equal(run('install', '--dir', parent).status, 1);
+  assert.equal(readFileSync(path.join(installed, 'custom.txt'), 'utf8'), 'Keep my edits');
+  assert.equal(run('install', '--dir', parent, '--force').status, 0);
+  const backups = readdirSync(path.join(root, 'skill-backups'));
+  assert.equal(backups.length, 1);
+  assert.equal(readFileSync(path.join(root, 'skill-backups', backups[0], 'custom.txt'), 'utf8'), 'Keep my edits');
+  assert.equal(existsSync(path.join(installed, 'custom.txt')), false);
+  assert.equal(readFileSync(path.join(installed, 'SKILL.md'), 'utf8'), text);
+});
+test('invalid arguments and version', () => {
+  assert.equal(run('install', '--dir').status, 1);
+  assert.equal(run('install', '--project', '--dir', 'unused').status, 1);
+  assert.equal(run('nonsense').status, 1);
+  assert.equal(run('--version').stdout.trim(), '1.0.0');
+});
