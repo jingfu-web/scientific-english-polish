@@ -4,7 +4,7 @@
 
 ## 安装
 
-需要 Node.js 18+。发布成功后可执行：
+需要 Node.js 18+。可执行：
 
 ```sh
 npm install -g @gaoyee/scientific-english-polish
@@ -24,7 +24,7 @@ npm 安装会提供专用命令，运行 install 子命令后才写入技能目�
 ## 下载 tgz 后安装
 
 ```sh
-npm install -g ./gaoyee-scientific-english-polish-1.0.0.tgz
+npm install -g ./gaoyee-scientific-english-polish-1.0.1.tgz
 scientific-english-polish install
 ```
 
@@ -67,3 +67,4 @@ npm publish --access public --registry=https://registry.npmjs.org
 ```
 
 发布需 npm 账户 gaoyee；GitHub 登录和 npm 终端登录互相独立。包内不附带原始讲义、图片、分析缓存或个人路径。来源说明位于 skills/scientific-english-polish/references/source-map.md。尚未指定开源许可证（UNLICENSED）。
+

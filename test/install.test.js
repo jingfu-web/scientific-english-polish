@@ -30,5 +30,6 @@ test('invalid arguments and version', () => {
   assert.equal(run('install', '--dir').status, 1);
   assert.equal(run('install', '--project', '--dir', 'unused').status, 1);
   assert.equal(run('nonsense').status, 1);
-  assert.equal(run('--version').stdout.trim(), '1.0.0');
+  assert.equal(run('--version').stdout.trim(), JSON.parse(readFileSync(new URL('../package.json', import.meta.url), 'utf8')).version);
 });
+

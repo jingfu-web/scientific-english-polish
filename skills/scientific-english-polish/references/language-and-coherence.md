@@ -10,6 +10,7 @@ Apply these checks to the passage; they are not mandatory visible sections in th
 - Repair sentence fragments and comma splices. A dependent clause starting with because, although, if, or since needs an appropriate main clause. Mathematical displays can form part of a grammatical sentence.
 - For a participial opener, identify who performs the action. Prefer an explicit actor or conditional clause when attachment is misleading. Adding `by` alone is not a general repair for a dangling modifier.
 - Keep coordinated items comparable in grammar and conceptual level. Preserve asymmetric scientific relationships rather than forcing artificial parallelism.
+- By default, use the Oxford (serial) comma before the final `and` or `or` in a list of three or more items: `A, B, and C`; `A, B, C, and D`. Apply this consistently throughout the manuscript unless the user or target journal specifies otherwise. For two items, normally write `A and B` without a comma. Treat this as the skill's preferred style, not a universal grammar requirement; preserve the intended grouping of nested lists.
 - Check conventional collocations and literal Chinese translations. Translate the intended concept: 迭代次数 concerns iterations, not algebra; increase by and increase to have different numerical meanings.
 - Relative-clause punctuation can change scope. Decide whether the clause identifies a subset or adds supplementary information before choosing punctuation or that/which.
 

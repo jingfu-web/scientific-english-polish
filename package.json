@@ -1,6 +1,6 @@
 {
   "name": "@gaoyee/scientific-english-polish",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Install a scientific English polishing skill for Codex.",
   "type": "module",
   "bin": {
@@ -24,3 +24,4 @@
   },
   "license": "UNLICENSED"
 }
+
